@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "31f1b7db-07b0-4f6a-861b-31b42ce82c10",
+		"name": "DemoBook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getpost",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/{{PostID}}",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"{{PostID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Code retour 200\", function(){",
+					"",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test(\"Temps de response inferieur a 400ms\", function(){",
+					"    pm.expect(pm.response.responseTime).to.be.below(400);",
+					"});",
+					"",
+					"pm.test(\"Reponse Json n'est pas vide\", function(){",
+					"    pm.expect(pm.response).to.be.json;",
+					"});",
+					"",
+					"pm.test(\"userId est egale a 1\", function(){",
+					"    var jsonRes=pm.response.json();",
+					"    pm.expect(jsonRes.userId).to.eq(1);",
+					"});"
+				]
+			}
+		}
+	]
+}
