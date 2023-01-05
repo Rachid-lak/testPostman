@@ -11,6 +11,6 @@ before_script:
 - node_modules/.bin/newman --version
 
 script:
-- node_modules/.bin/newman run testPostman/DemoBook.postman_collection.json
-- node_modules/.bin/newman run testPostman/Local.postman_environment.json
-- node_modules/.bin/newman run testPostman/QA.postman_environment.json
+- node_modules/.bin/newman run DemoBook.postman_collection.json
+- node_modules/.bin/newman run Local.postman_environment.json
+- node_modules/.bin/newman run QA.postman_environment.json
